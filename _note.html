@@ -1,0 +1,40 @@
+<div ng-controller="NotebookCtrl">
+<div ng-repeat="note in notes">
+       <div id="box{{note.id}}" style="background-color:black;color:white; float:left; margin:10px; width:25%; padding:20px;">
+        <my-note class="span2" delete="deleteNote(note.id)" note="note">
+        	<button ng-click="text_bold(note.id)">B</button>
+        	<button ng-click="italics(note.id)">I</button>
+        	<button ng-click="underline(note.id)">U</button>
+        	<select name="fontSize" id="fontsize{{note.id}}" ng-selected="font_size(note.id)">
+              <option>Size</option>
+        	    <option value='12'>12</option>
+  				    <option value='14'>14</option>
+  				    <option value='16'>16</option>
+  				    <option value='18'>18</option>
+  				    <option value='20'>20</option>
+ 				      <option value='22'>22</option>
+  				    <option value='24'>24</option>
+  				    <option value='26'>26</option>
+			    </select>
+			    <select name="bgcolor" id="bgcolor{{note.id}}" ng-selected="bg_color(note.id)"> 
+            <option>Bg</option>
+				    <option value='1'> Grey </option>
+				    <option value='2'> Red </option>
+				    <option value='3'> Blue </option>
+				    <option value='4'> Cyan </option>
+				    <option value='5'> Green </option>
+          </select>
+        	<button ng-click="edit=!edit">Edit</button>
+          <button class="btn btn-large close pull-right" ng-click="delete()">&times;</button>
+	       <div ng-hide="edit">
+          <h2>{{note.title}}</h2><br />
+	        <p id="{{note.id}}">{{note.description}}</p>
+          </div>
+          <div ng-show="edit">
+            <input ng-model="note.title"><br />
+            <input ng-model="note.description">
+          </div>
+        </my-note>
+        </div>
+</div>
+</div>
