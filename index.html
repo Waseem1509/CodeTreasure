@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+    <script src="http://code.angularjs.org/angular-1.0.0rc12.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+
+    <title>Sticky Notes</title>
+</head>
+<body>
+<div ng-app="myApp">
+    <div ng-controller="NotebookCtrl">
+        <div class="page-header">
+            <h1>Sticky Notes</h1>
+        </div>
+        <button ng-click="sticky_note('form');">+</button>
+        <div id="form" style="display:none;">
+        <div class="form-actions">
+            <div class="input-append">
+                <form ng-submit="addNote(noteTitle);resetForm();">
+			<input class="span3" ng-model="noteTitle" size="30" type="text" placeholder="Title"><br />
+			<textarea rows="6" cols="24" ng-model="noteDescription" placeholder="Description"></textarea><br />
+                    	<button class="btn btn-success" type="button" ng-disabled="!noteTitle" ng-click="addNote(noteTitle,noteDescription);enter_data(noteTitle,noteDescription);resetForm();">Add Note
+                    </button>
+                </form>
+            </div>
+        </div>
+        </div>
+        <my-notebook notes="getNotes()" ondelete="deleteNote(id)"></my-notebook>
+    </div>
+</div>
+</body>
+</html>
